@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Letter Guess</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<!-- Get the JQuery library
+  Jquery 1 & 2 are the same except JQuery 2 doesn't
+  support IE 6, 7, and 8 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+</head>
+
+<body>
+        <h1> Psyicic Game </h1>
+        <h3> Guess what letter I am thinking of</h3>
+        <h4> Wins: </h4>
+        <h4> Losses: </h4>
+        <h4> Guesses Left: </h4>
+        <h4> Guesses so far:  </h4> 
+        <div id=input></div>
+
+    <!-- Start JS-->
+<script language="javascript" type="text/javascript">
+  
+  let input = "";
+
+  document.onkeyup = function(event){
+        let input = event.key.toLowerCase();
+        console.log(input);
+        document.write("hi");
+        document.write(input);
+
+    // variables we will need 
+    let wins = 0;
+    let losses = 0;
+    let left = 9;
+    let guesses = [];  // create an array for guesses
+      console.log(guesses);
+      document.write(guesses);
+
+    
+    function reset() {
+        let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        let answer = letters[Math.floor(Math.random() * letters.length)];
+        return answer
+            };
+    
+    
+    let answer = reset();
+    document.write("The number I picked is: " + answer);  
+  
+  
+  }; //close function saving the input value
+    //JQUerty Code / 
+
+
+// var i = left;
+// for(i;i>0,i--){
+// //   let input = //jQuery event user input
+     
+// // if : the guess = the answer ==> then add a win ++ and start the game over 
+//     if(input = answer){
+//         let win = win +1;
+//         reset ();
+//     }
+//     // else if:  number of guesses is up then add a loss and start the game over 
+//     else if(left=0){
+//         let losses = losses +1;
+//         reset();
+//     }
+//     else{
+//         guesses[left- i]=input;
+//         let left = i        
+//     }
+//     // else : add user guesses to the array wait for another event
+// //}
+// }
+
+// });
+  //  });
+//    });
+</script>
+
+</body>
+</html>
