@@ -33,7 +33,7 @@
     var left = 9;
     var guesses = [];  // create an array for guesses
     var input = "";
-  
+    var answer = ""
     // The computer will chose a random number stored as answer//
   function reset() {
         let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -42,39 +42,47 @@
         console.log("The letter I picked is: " + answer);  
         return answer
             };
-       let answer = reset();
-
-
-        document.onkeyup = function(event){
-
-          // moving my reset funtion inside this keyboard event function
-
-
-            input = event.key.toLowerCase();
-            if(left >1 && input === answer){
-                console.log("you win!");
+      //  let answer = reset();
+  function correct(){
+    console.log("you win!");
                 alert("You Win!! Great, now I am thinking of a new number, go ahead and guess again!");
                 wins++;
                 console.log("number of wins " + wins);
                 answer = reset();
                 console.log("okay another round i pick " + answer)
                 return answer;
-              } // closes if statement
-              else if(left>1) {
-                console.log("nope!");
+  }
+
+  function wrong(){
+    console.log("nope!");
                 //alert("Try Again!");
                 left--;
                 console.log("left" + left)
                 guesses[10-left] = input;
                 console.log("your guesses so far" + guesses); 
-              }  // closes else statement
-              else{
-                console.log("out of guesses");
+  }
+
+  function done(){
+    console.log("out of guesses");
                 alert("You are out of guesses. Let's play again!");
                 losses++;
                 guesses=[];
                 answer = reset();
                 return answer;
+  }
+    reset();
+    document.onkeyup = function(event){
+
+          // moving my reset funtion inside this keyboard event function
+            input = event.key.toLowerCase();
+            if(left >1 && input === answer){
+              correct();
+              } // closes if statement
+            else if(left>1) {
+              wrong();
+                 }  // closes else statement
+            else{
+              done ();
               }
              
 
