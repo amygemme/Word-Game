@@ -44,26 +44,19 @@
             };
       //  let answer = reset();
   function correct(){
-    console.log("you win!");
-                alert("You Win!! Great, now I am thinking of a new number, go ahead and guess again!");
-                wins++;
-                console.log("number of wins " + wins);
-                answer = reset();
-                console.log("okay another round i pick " + answer)
-                return answer;
+          console.log("you win!");
+          alert("You Win!! Great, now I am thinking of a new number, go ahead and guess again!");
+          wins++;
+          answer = reset();
+          return answer;
   }
 
   function wrong(){
-    console.log("nope!");
-                //alert("Try Again!");
-                left--;
-                console.log("left" + left)
-                guesses[10-left] = input;
-                console.log("your guesses so far" + guesses); 
+      guesses[10-left] = input;
+      left--;
   }
 
   function done(){
-    console.log("out of guesses");
                 alert("You are out of guesses. Let's play again!");
                 losses++;
                 guesses=[];
@@ -86,12 +79,10 @@
               }
              
 
-        console.log(input);
  
         //JQUerty Code / 
-              console.log("numnber of wins" + wins)
-              console.log("number of losses" + losses)
-              
+          
+        console.log(guesses)      
         $("#guesses").text(guesses);
         $("#left").text(left);
         $("#wins").text(wins);
