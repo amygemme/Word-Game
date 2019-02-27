@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Letter Guess</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<!-- Get the JQuery library
+  Jquery 1 & 2 are the same except JQuery 2 doesn't
+  support IE 6, 7, and 8 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+</head>
+
+<body>
+        <h1> Psyicic Game </h1>
+        <h3> Guess what letter I am thinking of</h3>
+        <h4> Wins: <span id="wins"> 0</span></h4>
+        <h4> Losses:<span id="losses"> 0</span> </h4>
+        <h4> Guesses Left: <span id="left"> 10 </span></h4>
+        <h4> Guesses so far: <span id="guesses"> None </span> </h4> 
+
+    <!-- Start JS-->
+<script language="javascript" type="text/javascript">
+  
+   // variables we will need 
+    var wins = 0;
+    var losses = 0;
+    var left = 9;
+    var guesses = [];  // create an array for guesses
+    var input = "";
+    var answer = ""
+    // The computer will chose a random number stored as answer//
+  function reset() {
+        let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        let answer = letters[Math.floor(Math.random() * letters.length)];
+        left =10;
+        console.log("The letter I picked is: " + answer);  
+        return answer
+            };
+      //  let answer = reset();
+  function correct(){
+          console.log("you win!");
+          alert("You Win!! Great, now I am thinking of a new number, go ahead and guess again!");
+          wins++;
+          answer = reset();
+          return answer;
+  }
+
+  function wrong(){
+      guesses[10-left] = input;
+      left--;
+  }
+
+  function done(){
+                alert("You are out of guesses. Let's play again!");
+                losses++;
+                guesses=[];
+                answer = reset();
+                return answer;
+  }
+    reset();
+    document.onkeyup = function(event){
+
+          // moving my reset funtion inside this keyboard event function
+            input = event.key.toLowerCase();
+            if(left >1 && input === answer){
+              correct();
+              } // closes if statement
+            else if(left>1) {
+              wrong();
+                 }  // closes else statement
+            else{
+              done ();
+              }
+             
+
+ 
+        //JQUerty Code / 
+          
+        console.log(guesses)      
+        $("#guesses").text(guesses);
+        $("#left").text(left);
+        $("#wins").text(wins);
+        $("#losses").text(losses);
+
+      }; //close function triggered by hitting a key
+
+
+</script>
+
+</body>
+</html>
